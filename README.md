@@ -1,1 +1,1 @@
-A collection of all the lettcode problems I have solved till today.
+A collection of all the leetcode problems I have solved till today.
