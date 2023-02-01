@@ -1,29 +1,13 @@
 class Solution {
 public:
     string gcdOfStrings(string str1, string str2) {
-        string ans = "";
-        int head=0;
-        string interim = "";
-        while(head < str1.size() && head < str2.size()){
-            interim+= str1[head];
-            // cout<<interim<<endl;
-            if(isGood(str1,interim) && isGood(str2,interim)){
-                ans=interim;
-            }
-            head++;
+        // Check if they have non-zero GCD string.
+        if (str1 + str2 != str2 + str1) {
+            return "";
         }
-        return ans;
-    }
-    
-    bool isGood(string str,string x){
-        if(x==str) return true;
-        if(x.size() > str.size()) return false;
-        if(x.size() == str.size() & x!=str) return false;
-        string y = x;
-        while(x.size() < str.size()){
-            x+=y;
-            // cout<<"-"<<x<<endl;
-        }
-        return isGood(str,x);
+
+        // Get the GCD of the two lengths.
+        int gcdLength = gcd(str1.size(), str2.size());
+        return str1.substr(0, gcdLength);
     }
 };
