@@ -20,7 +20,6 @@ public:
     void helper(TreeNode* root,int sum,int &finalSum){
         sum = sum*10 + root->val; 
         if(!root->left && !root->right){
-            cout<<sum<<endl;
             finalSum+=sum;
             return;
         }
