@@ -6,15 +6,11 @@ public:
         int right = people.size()-1;
         sort(people.begin(),people.end());
         while(left <= right){
+            count++;
             if(people[left] + people[right] <= limit){
-                count++;
                 left++;
-                right--;
             }
-            else{
-                count++;
-                right--;
-            }
+            right--;
         }
         return count;
     }
