@@ -8,7 +8,6 @@ public:
             if(s[i]=='a' |s[i]=='e' |s[i]=='i' |s[i]=='o' |s[i]=='u') count++;
             right++;
         }
-        cout<<right<<" "<<left<<" "<<count;
         int maxCount = count;
         while(right < s.size()){
             if(s[right]=='a' | s[right]=='e' | s[right]=='i' | s[right]=='o' | s[right]=='u'){
