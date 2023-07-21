@@ -20,27 +20,21 @@ public:
     }
     
     vector<vector<int>> merge(vector<vector<int>> intervals) {
-        int start = -1;
-        int end  = -1;
-        vector<vector<int>> ans;
-        sort(intervals.begin(),intervals.end());
-        
-        for(auto x : intervals){
-            if(x[0] <= end && x[1] <=end) continue;
-            else if(x[0] <= end && x[1]>end) end = x[1];
-            else{
-                vector<int> v = {start,end};
-                ans.push_back(v);
-                start = x[0];
-                end = x[1];
+        sort(intervals.begin(), intervals.end());
+
+        vector<vector<int>> merged;
+        for (auto interval : intervals) {
+            // if the list of merged intervals is empty or if the current
+            // interval does not overlap with the previous, simply append it.
+            if (merged.empty() || merged.back()[1] < interval[0]) {
+                merged.push_back(interval);
+            }
+            // otherwise, there is overlap, so we merge the current and previous
+            // intervals.
+            else {
+                merged.back()[1] = max(merged.back()[1], interval[1]);
             }
         }
-        vector<int> v = {start,end};
-        ans.push_back(v);        
-        vector<vector<int>> finalAns;
-        for(int i=1;i<ans.size();i++){
-            finalAns.push_back(ans[i]);
-        }
-        return finalAns;
+        return merged;
     }
 };
